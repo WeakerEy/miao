@@ -673,3 +673,24 @@
   console.log(sumh)
   console.log(sh)
 </script>
+
+<script xtype="xxx" id="ch0105/21">
+  var n = Number(prompt())
+  var count = 0
+  do {
+    if (n != 1) {
+      if (n % 2 != 0) {
+        count = 3 * n + 1
+        console.log(n + "*" + 3 + "+" + 1 + "=" + count)
+        n = count
+      } else {
+        count = n / 2
+        console.log(n + "/" + 2 + "=" + count)
+        n = count
+      }
+    }
+    if (n == 1) {
+      console.log("End")
+    }
+  } while (n != 1)
+</script>
