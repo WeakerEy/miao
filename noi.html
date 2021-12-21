@@ -1122,3 +1122,135 @@
 
   console.log(sum)
 </script>
+
+<script type="xxx" id="narcissistic">
+  function nar(n) {
+    var k = 0;
+    var sum = 0;
+    var m = n
+    while (m > 0) {
+      k = m % 10
+      sum += k ** 3
+      m = (m - k) / 10
+    }
+    if (n == sum) {
+      return true
+    } else {
+      return false
+    }
+  }
+</script>
+
+<script type="xxx" id="narcissistics">
+  function narcissistics(n) {
+    var t = ""
+    for (let i = 100; i <= n; i++) {
+      var k = 0
+      var sum = 0
+      var m = i
+      while (m > 0) {
+        k = m % 10
+        sum += k ** 3
+        m = (m - k) / 10
+      }
+      if (i == sum) {
+        t += i +","
+      }
+    }
+    return t
+  }
+</script>
+
+<script type="xxx" id="palindrom">
+  function palindrom(n) {
+    var m = n
+    var k = 0
+    var count = ""
+    while (m > 0) {
+      k = m % 10
+      count += k
+      m = (m - k) / 10
+    }
+    var counts = Number(count)
+    if (n == counts) {
+      return true
+    } else {
+      return false
+    }
+  }
+</script>
+
+<script type="xxx" id="weekday">
+
+</script>
+
+<script type="xxx" id="complete-number">
+  function com(n) {
+    var m = n
+    var count = 0
+    for (let i = 1; i < n; i++) {
+      if (m % i == 0) {
+        count += i
+      }
+    }
+    if (n == count) {
+      return true
+    } else {
+      return false
+    }
+  }
+</script>
+
+<script type="xxx" id="complete-numbers">
+  function coms(n) {
+    var count = 0
+    for (var i = 1; i <= n; i++) {
+      for (var j = 1; j < i; j++) {
+        if (i % j == 0) {
+          count += j
+        }
+      }
+      if (i == count) {
+        console.log(i)
+        count = 0;
+      } else {
+        count = 0
+      }
+    }
+  }
+</script>
+
+<script type="xxx" id="prime">
+  function isPrime(n) {
+    var flag = true
+    if (n <= 1) {
+      flag = false
+    } else {
+      for (var i = 2; i < n; i++) {
+        if (n % i == 0) {
+          flag = false
+        }
+      }
+    }
+    return flag
+  }
+</script>
+
+<script type="xxx" id="primes">
+  function primes(n) {
+    flag = false;
+    var count = ""
+    for (var i = 2; i <= n; i++) {
+      flag = true
+      for (var j = 2; j < i; j++) {
+        if (i % j == 0) {
+          flag = false
+        }
+      }
+      if (flag) {
+        count += i + ","
+      }
+    }
+    return count
+  }
+</script>
