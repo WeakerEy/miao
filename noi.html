@@ -1124,6 +1124,7 @@
 </script>
 
 <script type="xxx" id="narcissistic">
+  var n = Number(prompt())
   function nar(n) {
     var k = 0;
     var sum = 0;
@@ -1134,14 +1135,16 @@
       m = (m - k) / 10
     }
     if (n == sum) {
-      return true
+      return YES
     } else {
-      return false
+      return NO
     }
   }
+  console.log(nar(n))
 </script>
 
 <script type="xxx" id="narcissistics">
+  var n = Number(prompt())
   function narcissistics(n) {
     var t = ""
     for (let i = 100; i <= n; i++) {
@@ -1159,9 +1162,11 @@
     }
     return t
   }
+  console.log(narcissistics(n))
 </script>
 
 <script type="xxx" id="palindrom">
+  var n = Number(prompt())
   function palindrom(n) {
     var m = n
     var k = 0
@@ -1173,11 +1178,12 @@
     }
     var counts = Number(count)
     if (n == counts) {
-      return true
+      return YES
     } else {
-      return false
+      return NO
     }
   }
+  console.log(palindrom(n))
 </script>
 
 <script type="xxx" id="weekday">
@@ -1185,6 +1191,7 @@
 </script>
 
 <script type="xxx" id="complete-number">
+  var n = Number(prompt())
   function com(n) {
     var m = n
     var count = 0
@@ -1194,14 +1201,16 @@
       }
     }
     if (n == count) {
-      return true
+      return YES
     } else {
-      return false
+      return NO
     }
   }
+  console.log(com(n))
 </script>
 
 <script type="xxx" id="complete-numbers">
+  var n = Number(prompt())
   function coms(n) {
     var count = 0
     for (var i = 1; i <= n; i++) {
@@ -1218,9 +1227,11 @@
       }
     }
   }
+  console.log(coms(n))
 </script>
 
 <script type="xxx" id="prime">
+  var n = Number(prompt())
   function isPrime(n) {
     var flag = true
     if (n <= 1) {
@@ -1232,11 +1243,17 @@
         }
       }
     }
-    return flag
+    if (flag) {
+      return YES
+    }else{
+      return NO
+    }
   }
+  console.log(isPrime(n))
 </script>
 
 <script type="xxx" id="primes">
+  var n = Number(prompt())
   function primes(n) {
     flag = false;
     var count = ""
@@ -1253,4 +1270,5 @@
     }
     return count
   }
+  console.log(primes(n))
 </script>
