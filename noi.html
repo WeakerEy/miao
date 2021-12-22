@@ -677,7 +677,7 @@
 <script type="xxx" id="ch0105/21">
   var n = Number(prompt())
   var count = 0
-  do {
+  while (n != 1){
     if (n != 1) {
       if (n % 2 != 0) {
         count = 3 * n + 1
@@ -692,7 +692,7 @@
     if (n == 1) {
       console.log("End")
     }
-  } while (n != 1)
+  }
 </script>
 
 <script type="xxx" id="ch0105/22">
@@ -755,11 +755,13 @@
 
 <script type="xxx" id="ch0105/25">
   for (var num = 100; ; num++) {
-    if (
-      num.toString(7) % 10 == Math.trunc(num.toString(9) / 100)
-      && Math.trunc(num.toString(7) % 100 / 10) == Math.trunc(num.toString(9) % 100 / 10)
-      && num.toString(9) % 10 == Math.trunc(num.toString(7) / 100)
-    ) break
+    var sev = num.toString(7)
+    var nine = num.toString(9)
+    if((sev%7 == (nine - nine%81)/81%9)&&((sev-sev%7)/7%7 == (nine-nine%9)/9%9)&&((sev - sev%49)/49%7 == nine%9)){
+      console.log(num)
+      break
+    }
+  }
 </script>
 
 <script type="xxx" id="ch0105/26">
@@ -825,7 +827,7 @@
   console.log(count)
 </script>
 
-<script type="xxx" id="ch105/30">
+<script type="xxx" id="ch0105/30">
   var m = Number(prompt())
   var k = Number(prompt())
   var count = 0
@@ -837,9 +839,9 @@
       }
       m = (m - n) / 10
     }
-    if(count == k){
+    if (count == k) {
       console.log("YES")
-    }else{
+    } else {
       console.log("NO")
     }
   } else {
@@ -1140,11 +1142,11 @@
       return "NO"
     }
   }
-  console.log(nar(n))
+  var result = nar(n)
+  console.log(result)
 </script>
 
 <script type="xxx" id="narcissistics">
-  var n = Number(prompt())
   function narcissistics(n) {
     var t = ""
     for (let i = 100; i <= n; i++) {
@@ -1157,12 +1159,13 @@
         m = (m - k) / 10
       }
       if (i == sum) {
-        t += i +""
+        t += i +" "
       }
     }
     return t
   }
-  console.log(narcissistics(n))
+  var result = narcissistics(100)
+  console.log(result)
 </script>
 
 <script type="xxx" id="palindrom">
@@ -1210,7 +1213,6 @@
 </script>
 
 <script type="xxx" id="complete-numbers">
-  var n = Number(prompt())
   function coms(n) {
     var count = 0
     for (var i = 1; i <= n; i++) {
@@ -1227,7 +1229,8 @@
       }
     }
   }
-  console.log(coms(n))
+  var result = coms(1000)
+  console.log(result)
 </script>
 
 <script type="xxx" id="prime">
@@ -1249,11 +1252,11 @@
       return "NO"
     }
   }
-  console.log(isPrime(n))
+  var result = isPrime(n)
+  console.log(result)
 </script>
 
-<script xtype="xxx" id="primes">
-  var n = Number(prompt())
+<script type="xxx" id="primes">
   function primes(n) {
     flag = false;
     var count = ""
@@ -1265,10 +1268,11 @@
         }
       }
       if (flag) {
-        count += i + ""
+        count += i + " "
       }
     }
     return count
   }
-  console.log(primes(n))
+  var result = primes(100)
+  console.log(result)
 </script>
