@@ -1210,30 +1210,31 @@
   console.log(palindrom(n))
 </script>
 
-<script type="xxx" id="weekday">
+<script xtype="xxx" id="weekday">
   function isry(year) {
-    if (year % 4 == 0) {
+    if (year % 400 == 0) {
       return true
     }
     if (year % 100 == 0) {
       return false
     }
-    if (year % 400 == 0) {
+    if (year % 4 == 0) {
       return true
     }
+    return false
   }
   function sumday(year, month) {
     switch (month) {
-      case (1):
-      case (3):
-      case (5):
-      case (7):
-      case (8):
-      case (10):
-      case (12):
+      case 1:
+      case 3:
+      case 5:
+      case 7:
+      case 8:
+      case 10:
+      case 12:
         return 31
-      case (2):
-        if (isry) {
+      case 2:
+        if (isry(year)) {
           return 29
         } else {
           return 28
@@ -1245,17 +1246,17 @@
   var year = Number(prompt())
   var month = Number(prompt())
   var day = 0
-  for (var i = 1; i <= year; i++) {
+  for (var i = 1; i < year; i++) {
     if (isry(i)) {
       day += 366
     } else {
       day += 365
     }
   }
-  for (var j = 1; j <= month; j++) {
-    day += sumday(j)
+  for (var j = 1; j < month; j++) {
+    day += sumday(year, j)
   }
-  day = (day + 1) % 7
+  day = day % 7
   console.log(day)
 
 </script>
@@ -1389,7 +1390,7 @@
   }
 </script>
 
-<script type="xxx" id="itoa">
+<script type="xxx" id="itob">
   var n = Number(prompt())
   var result = ""
   while (n > 0) {
@@ -1452,7 +1453,7 @@
   }
 </script>
 
-<script xtype="xxx" id="sqrt">
+<script type="xxx" id="sqrt">
   var n = Number(prompt())
   //二分法：处理大型运算
   function sqrt(n) {
