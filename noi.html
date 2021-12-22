@@ -1147,25 +1147,46 @@
 </script>
 
 <script type="xxx" id="narcissistics">
-  function narcissistics(n) {
-    var t = ""
-    for (let i = 100; i <= n; i++) {
-      var k = 0
-      var sum = 0
-      var m = i
-      while (m > 0) {
-        k = m % 10
-        sum += k ** 3
-        m = (m - k) / 10
-      }
-      if (i == sum) {
-        t += i +" "
-      }
+  // 函数方法：
+  // function narcissistics(n) {
+  //   var t = ""
+  //   for (let i = 100; i <= n; i++) {
+  //     var k = 0
+  //     var sum = 0
+  //     var m = i
+  //     while (m > 0) {
+  //       k = m % 10
+  //       sum += k ** 3
+  //       m = (m - k) / 10
+  //     }
+  //     if (i == sum) {
+  //       t += i +" "
+  //     }
+  //   }
+  //   return t
+  // }
+  // var result = narcissistics(10000)
+  // console.log(result)
+  function nar(n) {
+    var k = 0;
+    var sum = 0;
+    var m = n
+    while (m > 0) {
+      k = m % 10
+      sum += k ** 3
+      m = (m - k) / 10
     }
-    return t
+    if (n == sum) {
+      return true
+    } else {
+      return false
+    }
   }
-  var result = narcissistics(10000)
-  console.log(result)
+  for (var i = 2; i <= 10000; i++) {
+    if (nar(i)) {
+      console.log(i)
+    }
+  }
 </script>
 
 <script type="xxx" id="palindrom">
@@ -1213,24 +1234,46 @@
 </script>
 
 <script type="xxx" id="complete-numbers">
-  function coms(n) {
+  // 函数方法：
+  // function coms(n) {
+  //   var count = 0
+  //   var arr = ""
+  //   for (var i = 1; i <= n; i++) {
+  //     for (var j = 1; j < i; j++) {
+  //       if (i % j == 0) {
+  //         count += j
+  //       }
+  //     }
+  //     if (i == count) {
+  //       arr += i + " "
+  //       count = 0;
+  //     } else {
+  //       count = 0
+  //     }
+  //   }
+  //   return arr
+  // }
+  // var result = coms(1000)
+  // console.log(result)
+  function com(n) {
+    var m = n
     var count = 0
-    for (var i = 1; i <= n; i++) {
-      for (var j = 1; j < i; j++) {
-        if (i % j == 0) {
-          count += j
-        }
-      }
-      if (i == count) {
-        console.log(i)
-        count = 0;
-      } else {
-        count = 0
+    for (let i = 1; i < n; i++) {
+      if (m % i == 0) {
+        count += i
       }
     }
+    if (n == count) {
+      return true
+    } else {
+      return false
+    }
   }
-  var result = coms(1000)
-  console.log(result)
+  for (var i = 1; i <= 1000; i++) {
+    if (com(i)) {
+      console.log(i)
+    }
+  }
 </script>
 
 <script type="xxx" id="prime">
@@ -1257,22 +1300,45 @@
 </script>
 
 <script type="xxx" id="primes">
-  function primes(n) {
-    flag = false;
-    var count = ""
-    for (var i = 2; i <= n; i++) {
-      flag = true
-      for (var j = 2; j < i; j++) {
-        if (i % j == 0) {
+  // 函数方法：
+  // function primes(n) {
+  //   flag = false;
+  //   var count = ""
+  //   for (var i = 2; i <= n; i++) {
+  //     flag = true
+  //     for (var j = 2; j < i; j++) {
+  //       if (i % j == 0) {
+  //         flag = false
+  //       }
+  //     }
+  //     if (flag) {
+  //       count += i + " "
+  //     }
+  //   }
+  //   return count
+  // }
+  // var result = primes(100)
+  // console.log(result)
+  function isPrime(n) {
+    var flag = true
+    if (n <= 1) {
+      flag = false
+    } else {
+      for (var i = 2; i < n; i++) {
+        if (n % i == 0) {
           flag = false
         }
       }
-      if (flag) {
-        count += i + " "
-      }
     }
-    return count
+    if (flag) {
+      return true
+    }else{
+      return false
+    }
   }
-  var result = primes(100)
-  console.log(result)
+  for (var i = 1; i <= 100; i++) {
+    if (isPrime(i)) {
+      console.log(i)
+    }
+  }
 </script>
