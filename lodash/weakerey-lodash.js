@@ -141,11 +141,22 @@ var weakerey = {
 
   fromPairs: function (pairs) {
     var obj = {}
-    for (var i = 0; i < pairs.length; i += 2) {
-      obj[i] = obj[i + 1]
+    for (var i = 0; i < pairs.length; i++) {
+      for (var j = 0; j < pairs[i].length; j += 2) {
+        obj[pairs[i][j]] = pairs[i][j + 1]
+      }
     }
     return obj
-  }, head: function () { }, indexOf: function () { }, initial: function () { }, join: function () { }, last: function () { }, lastIndexOf: function () { }, reverse: function () { },
+  },
+
+  head: function (array) {
+    return array[0]
+  }, 
+  
+  indexOf: function () { 
+    
+  }, 
+  initial: function () { }, join: function () { }, last: function () { }, lastIndexOf: function () { }, reverse: function () { },
   uniq: function () { }, uniqBy: function () { }, without: function () { },
 
 
