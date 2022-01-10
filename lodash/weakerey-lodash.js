@@ -205,7 +205,41 @@ var weakerey = {
     return array
   },
 
-  uniq: function () { }, uniqBy: function () { }, without: function () { },
+  uniq: function (array) {
+    var arr = []
+    for (var i = 0; i < array.length; i++) {
+      var flag = true
+      for (var j = i + 1; j < array.length; j++) {
+        if (array[i] == array[j]) {
+          flag = false
+        }
+      }
+      if (flag) {
+        arr.push(array[i])
+      }
+    }
+    return arr
+  },
+
+  uniqBy: function () {
+
+  },
+
+  without: function (array, values) {
+    var obj = {}
+    var arr = []
+    for (var j = 1; j < arguments.length; j++) {
+      obj[arguments[j]] = 0
+    }
+    for (var i = 0; i < array.length; i++) {
+      if (array[i] in obj) {
+        continue
+      } else {
+        arr.push(array[i])
+      }
+    }
+    return arr
+  },
 
 
 }
