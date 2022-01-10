@@ -132,12 +132,21 @@ var weakerey = {
         arr.push(array[i])
       }
     }
+    depth--
     if (depth > 0) {
-      depth--
       arr = this.flattenDepth(arr, depth)
     }
     return arr
   },
+
+  fromPairs: function (pairs) {
+    var obj = {}
+    for (var i = 0; i < pairs.length; i += 2) {
+      obj[i] = obj[i + 1]
+    }
+    return obj
+  }, head: function () { }, indexOf: function () { }, initial: function () { }, join: function () { }, last: function () { }, lastIndexOf: function () { }, reverse: function () { },
+  uniq: function () { }, uniqBy: function () { }, without: function () { },
 
 
 }
