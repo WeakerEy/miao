@@ -1210,7 +1210,7 @@
   console.log(palindrom(n))
 </script>
 
-<script xtype="xxx" id="weekday">
+<script type="xxx" id="weekday">
   function isry(year) {
     if (year % 400 == 0) {
       return true
@@ -1256,7 +1256,7 @@
   for (var j = 1; j < month; j++) {
     day += sumday(year, j)
   }
-  day = day % 7
+  day = (day + 1) % 7
   console.log(day)
 
 </script>
