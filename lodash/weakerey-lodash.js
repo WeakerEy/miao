@@ -25,8 +25,9 @@ var weakerey = {
     return arr
   },
 
-  difference: function (array, values) {
+  difference: function (array, ...values) {
     var arr = []
+    values = arguments[1, arguments.length - 1]
     for (var i = 0; i < array.length; i++) {
       var flag = true
       for (var j = 0; j < values.length; j++) {
@@ -41,4 +42,32 @@ var weakerey = {
     return arr
   },
 
+  drop: function (array, n = 1) {
+    var arr = []
+    for (var i = 0; i < array.length; i++) {
+      if (n <= 0) {
+        arr.push(array[i])
+      }
+      n--
+    }
+    return arr
+  },
+
+  dropRight: function (array, n = 1) {
+    var arr = []
+    for (var i = 0; i < array.length - n; i++) {
+      arr.push(array[i])
+    }
+    return arr
+  },
+  
+  dropRightWhile: function () {
+
+  }, 
+  dropWhile: function () {
+
+  },
+  fill: function () {
+    
+  }, findIndex: function () { }, findLastIndex: function () { },
 }
