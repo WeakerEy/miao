@@ -151,12 +151,41 @@ var weakerey = {
 
   head: function (array) {
     return array[0]
-  }, 
-  
-  indexOf: function () { 
+  },
+
+  indexOf: function (array, value, fromIndex = 0) {
+    for (var i = fromIndex; i < array.length; i++) {
+      if (array[i] === value) {
+        return i
+      }
+    }
+    return -1
+  },
+
+  initial: function (array) {
+    array.length = array.length - 1
+    return array
+  },
+
+  join: function (array, separator = ",") {
+    var str = ""
+    for (var i = 0; i < array.length; i++) {
+      if (i == array.length - 1) {
+        str += array[i]
+      } else {
+        str += array[i] + separator
+      }
+    }
+    return str
+  },
+
+  last: function (array) {
+    return array[array.length - 1]
+  },
+
+  lastIndexOf: function () {
     
-  }, 
-  initial: function () { }, join: function () { }, last: function () { }, lastIndexOf: function () { }, reverse: function () { },
+  }, reverse: function () { },
   uniq: function () { }, uniqBy: function () { }, without: function () { },
 
 
