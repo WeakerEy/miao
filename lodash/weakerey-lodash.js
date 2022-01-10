@@ -60,14 +60,51 @@ var weakerey = {
     }
     return arr
   },
-  
+
   dropRightWhile: function () {
 
-  }, 
+  },
   dropWhile: function () {
 
   },
-  fill: function () {
-    
-  }, findIndex: function () { }, findLastIndex: function () { },
+
+  fill: function (array, value, start = 0, end = array.length) {
+    for (var i = start; i < end; i++) {
+      array[i] = value
+    }
+    return array
+  },
+
+  findIndex: function (array, predicate = identity, fromIndex = 0) {
+    for (var i = fromIndex; i < array.length; i++) {
+      if (array[i] == predicate) {
+        return i
+      }
+      for (var item in array[i]) {
+        if (item.value == predicate) {
+          return i
+        }
+      }
+    }
+  },
+
+  findLastIndex: function () {
+
+  },
+
+  flatten: function (array) {
+    var arr = []
+    for (var i = 0; i < array.length; i++) {
+      if (Array.isArray(array[i])) {
+        for (var j = 0; j < array[i].length; j++) {
+          arr.push(array[i][j])
+        }
+      } else {
+        arr.push(array[i])
+      }
+    }
+    return arr
+  }, flattenDeep: function () { }, flattenDepth: function () { },
+
+
 }
