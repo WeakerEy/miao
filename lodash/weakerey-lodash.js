@@ -171,9 +171,9 @@ var weakerey = {
     var str = ""
     for (var i = 0; i < array.length; i++) {
       if (i == array.length - 1) {
-        str += array[i]
+        str = str + array[i]
       } else {
-        str += array[i] + separator
+        str = str + array[i] + separator
       }
     }
     return str
@@ -183,9 +183,28 @@ var weakerey = {
     return array[array.length - 1]
   },
 
-  lastIndexOf: function () {
-    
-  }, reverse: function () { },
+  lastIndexOf: function (array, value, fromIndex = array.length - 1) {
+    for (var i = fromIndex; i >= 0; i--) {
+      if (array[i] === value) {
+        return i
+      }
+    }
+    return -1
+  },
+
+  reverse: function (array) {
+    var mid = Math.floor(array.length / 2)
+    var len = array.length
+    var start = 1
+    for (var i = 0; i < mid; i++) {
+      var flag = array[i]
+      array[i] = array[len - start]
+      array[len - start] = flag
+      start++
+    }
+    return array
+  },
+
   uniq: function () { }, uniqBy: function () { }, without: function () { },
 
 
