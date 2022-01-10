@@ -104,7 +104,40 @@ var weakerey = {
       }
     }
     return arr
-  }, flattenDeep: function () { }, flattenDepth: function () { },
+  },
+
+  flattenDeep: function (array) {
+    var arr = []
+    for (var i = 0; i < array.length; i++) {
+      if (Array.isArray(array[i])) {
+        var item = this.flattenDeep(array[i])
+        for (var j = 0; j < item.length; j++) {
+          arr.push(item[j])
+        }
+      } else {
+        arr.push(array[i])
+      }
+    }
+    return arr
+  },
+
+  flattenDepth: function (array, depth = 1) {
+    var arr = []
+    for (var i = 0; i < array.length; i++) {
+      if (Array.isArray(array[i])) {
+        for (var j = 0; j < array[i].length; j++) {
+          arr.push(array[i][j])
+        }
+      } else {
+        arr.push(array[i])
+      }
+    }
+    if (depth > 0) {
+      depth--
+      arr = this.flattenDepth(arr, depth)
+    }
+    return arr
+  },
 
 
 }
