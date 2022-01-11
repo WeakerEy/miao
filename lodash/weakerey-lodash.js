@@ -213,11 +213,13 @@ var weakerey = {
   uniq: function (array) {
     var arr = []
     var map = {}
-    for (var j = 0; j < array.length; j++) {
-      map[array[j]] = 0
-    }
-    for (var item in map) {
-      arr.push(item)
+    for (var i = 0; i < array.length; i++) {
+      if (array[i] in map) {
+        continue
+      } else {
+        map[array[i]] = 0
+        arr.push(array[i])
+      }
     }
     return arr
   },
