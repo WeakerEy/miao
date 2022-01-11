@@ -27,11 +27,16 @@ var weakerey = {
 
   difference: function (array, ...values) {
     var arr = []
-    values = arguments[1, arguments.length - 1]
+    var map = {}
+    for (var k = 0; k < values.length; k++) {
+      for (var l = 0; l < values[k].length; l++) {
+        map[values[k][l]] = 0
+      }
+    }
     for (var i = 0; i < array.length; i++) {
       var flag = true
-      for (var j = 0; j < values.length; j++) {
-        if (array[i] === values[j]) {
+      for (var item in map) {
+        if (array[i] === item) {
           flag = false
         }
       }
@@ -190,6 +195,10 @@ var weakerey = {
       }
     }
     return -1
+  },
+
+  pull: function () {
+
   },
 
   reverse: function (array) {
