@@ -28,19 +28,15 @@ var weakerey = {
   difference: function (array, ...values) {
     var arr = []
     var map = {}
-    for (var k = 0; k < values.length; k++) {
-      for (var l = 0; l < values[k].length; l++) {
-        map[values[k][l]] = 0
+    for (var j = 0; j < values.length; j++) {
+      for (var k = 0; k < values[j].length; k++) {
+        map[values[j][k]] = 1
       }
     }
     for (var i = 0; i < array.length; i++) {
-      var flag = true
-      for (var item in map) {
-        if (array[i] === item) {
-          flag = false
-        }
-      }
-      if (flag) {
+      if (array[i] in map) {
+        continue
+      } else {
         arr.push(array[i])
       }
     }
@@ -216,16 +212,12 @@ var weakerey = {
 
   uniq: function (array) {
     var arr = []
-    for (var i = 0; i < array.length; i++) {
-      var flag = true
-      for (var j = i + 1; j < array.length; j++) {
-        if (array[i] == array[j]) {
-          flag = false
-        }
-      }
-      if (flag) {
-        arr.push(array[i])
-      }
+    var map = {}
+    for (var j = 0; j < array.length; j++) {
+      map[array[j]] = 0
+    }
+    for (var item in map) {
+      arr.push(item)
     }
     return arr
   },
