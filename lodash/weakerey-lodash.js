@@ -224,10 +224,6 @@ var weakerey = {
     return arr
   },
 
-  uniqBy: function () {
-
-  },
-
   without: function (array, values) {
     var obj = {}
     var arr = []
@@ -243,6 +239,40 @@ var weakerey = {
     }
     return arr
   },
+
+  zip: function (...array) {
+    var result = []
+    var ary = Array.from(arguments)
+    var len = 0
+    ary.forEach(item => {
+      if (item.length > len) {
+        len = item.length
+      }
+    })
+    for (var i = 0; i < len; i++) {
+      var item = []
+      for (var j = 0; j < ary.length; j++) {
+        item.push(ary[j][i])
+      }
+      result.push(item)
+    }
+    return result
+  },
+
+  countBy: function (array, func) {
+    var obj = {}
+    for (var i = 0; i < array.length; i++) {
+      var key = func(array[i])
+      if (key in obj) {
+        obj[key]++
+      } else {
+        obj[key] = 1
+      }
+    }
+    return obj
+  }
+
+
 
 
 }
