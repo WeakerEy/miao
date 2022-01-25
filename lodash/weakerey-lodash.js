@@ -372,7 +372,67 @@ var weakerey = {
     })
     var result = [_true, _false]
     return result
-  }
+  },
 
+  reduce: function (set, func, start) {
+    if (arguments.length == 2) {
+      sum = set[0]
+    } else {
+      sum = start
+    }
+    if (Array.isArray(set) && arguments.length == 2) {
+      for (var i = 1; i < set.length; i++) {
+        sum = func(sum, set[i])
+      }
+    } else {
+      for (var i = 0; i < set.length; i++) {
+        sum = func(sum, set[i])
+      }
+    }
+    if (typeof set == "object") {
+      for (var key in set) {
+        func(sum, set[key], key)
+      }
+    }
+    return sum
+  },
+
+  reduceRight: function (set, func, start) {
+    if (arguments.length == 2) {
+      sum = set[0]
+    } else {
+      sum = start
+    }
+    if (Array.isArray(set) && arguments.length == 2) {
+      for (var i = set.length; i > 0; i--) {
+        sum = func(sum, set[i])
+      }
+    } else {
+      for (var i = set.length - 1; i >= 0; i--) {
+        sum = func(sum, set[i])
+      }
+    }
+    return sum
+  },
+
+  size: function (set) {
+    if (typeof set == "string") {
+      return set.length
+    }
+    var result = 0
+    for (var key in set) {
+      result++
+    }
+    return result
+  },
+
+  isArguments: function (value) {
+    var result = Object.prototype.toString.call(value)
+    if (result == "[Object String]" && Array.isArray(value)) {
+      return true
+    } else {
+      return false
+    }
+  }
 
 }
