@@ -322,6 +322,56 @@ var weakerey = {
       obj[key] = set[i]
     }
     return obj
+  },
+
+  map: function (set, func) {
+    var result = []
+    for (var i = 0; i < set.length; i++) {
+      if (typeof func != "function") {
+        var key = set[i][func]
+      } else {
+        var key = func(set[i])
+      }
+      result.push(key)
+    }
+    return result
+  },
+
+  partition: function (set, func) {
+    var _true = []
+    var _false = []
+    var val = 0
+    set.forEach(item => {
+      if (typeof func == "string") {
+        val = item[func]
+      } else if (typeof func == "function") {
+        val = func(item)
+      } else if (Array.isArray(func)) {
+        for (var i = 0; i < func.length; i++) {
+          if (item[func[i]] == func[i + 1]) {
+            val = true
+          } else {
+            val = false
+          }
+          i++
+        }
+      } else {
+        for (var key in func) {
+          if (item[key] == func[key]) {
+            val = true
+          } else {
+            val = false
+          }
+        }
+      }
+      if (val) {
+        _true.push(item["user"])
+      } else {
+        _false.push(item["user"])
+      }
+    })
+    var result = [_true, _false]
+    return result
   }
 
 
