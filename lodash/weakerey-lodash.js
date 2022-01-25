@@ -263,11 +263,10 @@ var weakerey = {
     var obj = {}
     for (var i = 0; i < array.length; i++) {
       if (typeof func !== "function") {
-        func = array[i][func]
+        var key = array[i][func]
       } else {
-        func = func(array[i])
+        var key = func(array[i])
       }
-      var key = func(array[i])
       if (key in obj) {
         obj[key]++
       } else {
@@ -297,11 +296,10 @@ var weakerey = {
     var obj = {}
     for (var i = 0; i < st.length; i++) {
       if (typeof func !== "function") {
-        func = st[i][func]
+        var key = st[i][func]
       } else {
-        func = func(st[i])
+        var key = func(st[i])
       }
-      var key = func
       if (key in obj) {
         obj[key].push(st[i])
       } else {
@@ -309,6 +307,19 @@ var weakerey = {
         ary.push(st[i])
         obj[key] = ary
       }
+    }
+    return obj
+  },
+
+  keyBy: function (set, func) {
+    var obj = {}
+    for (var i = 0; i < set.length; i++) {
+      if (typeof func !== "function") {
+        var key = set[i][func]
+      } else {
+        var key = func(set[i])
+      }
+      obj[key] = set[i]
     }
     return obj
   }
