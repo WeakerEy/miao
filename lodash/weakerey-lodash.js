@@ -262,6 +262,11 @@ var weakerey = {
   countBy: function (array, func) {
     var obj = {}
     for (var i = 0; i < array.length; i++) {
+      if (typeof func !== "function") {
+        func = array[i][func]
+      } else {
+        func = func(array[i])
+      }
       var key = func(array[i])
       if (key in obj) {
         obj[key]++
@@ -270,9 +275,43 @@ var weakerey = {
       }
     }
     return obj
+  },
+
+  every: function (st, func) {
+    for (var i = 0; i < st.length; i++) {
+      if (!func(st[i])) {
+        return false
+      }
+    }
+    return true
+  },
+
+  forEach: function (set, func) {
+    for (var key in set) {
+      func(set[key], key, set)
+    }
+    return set
+  },
+
+  groupBy: function (st, func) {
+    var obj = {}
+    for (var i = 0; i < st.length; i++) {
+      if (typeof func !== "function") {
+        func = st[i][func]
+      } else {
+        func = func(st[i])
+      }
+      var key = func
+      if (key in obj) {
+        obj[key].push(st[i])
+      } else {
+        var ary = []
+        ary.push(st[i])
+        obj[key] = ary
+      }
+    }
+    return obj
   }
-
-
 
 
 }
