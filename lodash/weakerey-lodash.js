@@ -372,7 +372,7 @@ var weakerey = {
         if (func.includes(".")) {
           var ary = func.split(".")
           for (var i = 0; i < ary.length; i++) {
-            var temp = key[func[i]]
+            var temp = key[ary[i]]
             key = temp
           }
         } else {
