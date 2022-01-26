@@ -326,11 +326,11 @@ var weakerey = {
 
   map: function (set, func) {
     var result = []
-    for (var i = 0; i < set.length; i++) {
+    for (var index in set) {
       if (typeof func != "function") {
-        var key = set[i][func]
+        var key = set[index][func]
       } else {
-        var key = func(set[i])
+        var key = func(set[index], index, set)
       }
       result.push(key)
     }
@@ -365,9 +365,9 @@ var weakerey = {
         }
       }
       if (val) {
-        _true.push(item["user"])
+        _true.push(item)
       } else {
-        _false.push(item["user"])
+        _false.push(item)
       }
     })
     var result = [_true, _false]
