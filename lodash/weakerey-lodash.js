@@ -515,7 +515,13 @@ var weakerey = {
   isEqual: function (value, other) {
     if (typeof value == typeof other) {
       if (typeof value == "object") {
-        for (var key in value) {
+        if (value._proto_ != other._proto_) {
+          return false
+        }
+        for (var key in other) {
+          if (typeof other[key] == "object") {
+            return this.isEqual(value[key], other[key])
+          }
           if (value[key] != other[key]) {
             return false
           }
@@ -548,6 +554,18 @@ var weakerey = {
 
   isFunction: function (val) {
     return typeof val == "function"
+  },
+
+  isMatch: function (obj, other) {
+    for (var key in other) {
+      if (typeof other[key] == "object") {
+        return this.isMatch(obj[key], other[key])
+      }
+      if (obj[key] != other[key]) {
+        return false
+      }
+    }
+    return true
   }
 
 }
