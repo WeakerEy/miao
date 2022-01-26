@@ -515,7 +515,7 @@ var weakerey = {
   isEqual: function (value, other) {
     if (typeof value == typeof other) {
       if (typeof value == "object") {
-        if (value._proto_ != other._proto_) {
+        if (Object.prototype.toString.call(value) != Object.prototype.toString.call(other)) {
           return false
         }
         for (var key in other) {
@@ -566,6 +566,35 @@ var weakerey = {
       }
     }
     return true
+  },
+
+  isNaN: function (value) {
+    var val = value + ""
+    if (val == "NaN") {
+      return true
+    }
+    return false
+  },
+
+  isNil: function (value) {
+    if (value == value && value != 0 && !value) {
+      return true
+    }
+    return false
+  },
+
+  isNull: function (value) {
+    return value != 0 && value - 1 == -1
+  },
+
+  isNumber: function (value) {
+    return typeof value == "number"
+  },
+
+  isObject: function (value) {
+    return typeof value == "object"
   }
+
+
 
 }
