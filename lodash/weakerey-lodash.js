@@ -368,15 +368,15 @@ var weakerey = {
     var result = []
     for (var index in set) {
       if (typeof func != "function") {
-        var key = set[index][func]
+        var key = set[index][func] || set[index][func[0]][func[2]]
       } else {
-        var key = func(set[index], index, set)
+        var key = func(set[index], +index, set)
       }
       result.push(key)
     }
     return result
   },
-
+  a = [{"a":{"b":1}},{"a":{"b":2}}]
   partition: function (set, func) {
     var _true = []
     var _false = []
@@ -401,6 +401,7 @@ var weakerey = {
             val = true
           } else {
             val = false
+            break
           }
         }
       }
@@ -473,6 +474,18 @@ var weakerey = {
     } else {
       return false
     }
+  },
+
+  isArray: function (value) {
+    return val instanceof Array
+  },
+
+  isBoolean: function (value) {
+    var result = Object.prototype.toString.call(value)
+    if (result == '[object Boolean]') {
+      return true
+    }
+    return false
   }
 
 }
