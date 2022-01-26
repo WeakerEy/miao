@@ -193,8 +193,20 @@ var weakerey = {
     return -1
   },
 
-  pull: function () {
-
+  pull: function (array, ...vals) {
+    var arr = []
+    for (var i = 1; i < arguments.length; i++) {
+      arr.push(arguments[i])
+    }
+    for (var i = 0; i < array.length; i++) {
+      for (var j = 0; j < arr.length; j++) {
+        if (array[i] == arr[j]) {
+          array.splice(i, 1)
+          i--
+        }
+      }
+    }
+    return array
   },
 
   reverse: function (array) {
@@ -277,12 +289,40 @@ var weakerey = {
   },
 
   every: function (st, func) {
+    var val
     for (var i = 0; i < st.length; i++) {
-      if (!func(st[i])) {
-        return false
+      if (typeof func == "string") {
+        val = st[i][func]
+        if (val in st) {
+          val = true
+        } else {
+          return false
+        }
+      } else if (Array.isArray(func)) {
+        for (var j = 0; j < func.length; j++) {
+          if (st[i][func[j]] == func[j + 1]) {
+            val = true
+          } else {
+            return false
+          }
+          j++
+        }
+      } else if (typeof func == "function") {
+        val = func(st[i])
+        if (!val) {
+          return false
+        }
+      } else {
+        for (var key in func) {
+          if (st[i][key] == func[key]) {
+            val = true
+          } else {
+            return false
+          }
+        }
       }
     }
-    return true
+    return val
   },
 
   forEach: function (set, func) {
