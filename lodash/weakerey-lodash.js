@@ -376,7 +376,7 @@ var weakerey = {
     }
     return result
   },
-  a = [{"a":{"b":1}},{"a":{"b":2}}]
+  
   partition: function (set, func) {
     var _true = []
     var _false = []
