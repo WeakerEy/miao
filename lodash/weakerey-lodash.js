@@ -495,6 +495,59 @@ var weakerey = {
       return true
     }
     return false
+  },
+
+  isDate: function (val) {
+    return Object.prototype.toString.call(val) == '[object Date]'
+  },
+
+  isElement: function (val) {
+    return Object.prototype.toString.call(val) == '[object HTMLBodyElement]'
+  },
+
+  isEmpty: function (val) {
+    for (var key in val) {
+      return false
+    }
+    return true
+  },
+
+  isEqual: function (value, other) {
+    if (typeof value == typeof other) {
+      if (typeof value == "object") {
+        for (var key in value) {
+          if (value[key] != other[key]) {
+            return false
+          }
+        }
+        return true
+      }
+      if (typeof value == "string" && value == other) {
+        return true
+      }
+      if (typeof value == "number" && value == other) {
+        return true
+      }
+    }
+    return false
+  },
+
+  isError: function (val) {
+    return Object.prototype.toString.call(val) == '[object Error]'
+  },
+
+  isFinite: function (val) {
+    if (typeof val == "number") {
+      if (val == val - 1) {
+        return false
+      }
+      return true
+    }
+    return false
+  },
+
+  isFunction: function (val) {
+    return typeof val == "function"
   }
 
 }
