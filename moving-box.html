@@ -33,6 +33,9 @@
 
   window.addEventListener("keydown", function (e) {
     console.log(flagUp)
+    if (e.shiftKey) {     //按住shift加速
+      speed = 250
+    }
     if (e.key == "ArrowUp") {
       flagUp = true
       vy = -1
@@ -52,6 +55,9 @@
   })
 
   window.addEventListener("keyup", function (e) {
+    if (!e.shiftKey) {     //松开shift，加速停止
+      speed = 150
+    }
     if (e.key == "ArrowUp") {
       flagUp = false
       if (flagDown) {
