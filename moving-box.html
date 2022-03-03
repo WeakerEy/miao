@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box1 {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box1"></div>
+</body>
+
+
+<script>
+  var div = document.querySelector("div")
+  var vx = 0           //判定方向
+  var vy = 0
+  var speed = 150       //赋予速度
+  var flagUp = false    //判定是否按下
+  var flagDown = false
+  var flagLeft = false
+  var flagRight = false
+
+  window.addEventListener("keydown", function (e) {
+    console.log(flagUp)
+    if (e.key == "ArrowUp") {
+      flagUp = true
+      vy = -1
+    }
+    if (e.key == "ArrowDown") {
+      flagDown = true
+      vy = 1
+    }
+    if (e.key == "ArrowLeft") {
+      flagLeft = true
+      vx = -1
+    }
+    if (e.key == "ArrowRight") {
+      flagRight = true
+      vx = 1
+    }
+  })
+
+  window.addEventListener("keyup", function (e) {
+    if (e.key == "ArrowUp") {
+      flagUp = false
+      if (flagDown) {
+        vy = 1
+      } else {
+        vy = 0
+      }
+    }
+    if (e.key == "ArrowDown") {
+      flagDown = false
+      if (flagUp) {
+        vy = -1
+      } else {
+        vy = 0
+      }
+    }
+    if (e.key == "ArrowLeft") {
+      flagLeft = false
+      if (flagRight) {
+        vx = 1
+      } else {
+        vx = 0
+      }
+    }
+    if (e.key == "ArrowRight") {
+      flagRight = false
+      if (flagLeft) {
+        vx = -1
+      } else {
+        vx = 0
+      }
+    }
+  })
+
+  var lastTime = null
+  requestAnimationFrame(function ani(time) {   //使用动画做，完全的键盘事件无法读取左右左这种一直不变左的判定，右会把左顶替
+    if (lastTime) {
+      var timeDiff = (time - lastTime) * 0.001   //16毫秒刷新一次，让其单位变成秒
+    } else {
+      timeDiff = 0
+    }
+
+    var dx = timeDiff * vx * speed
+    var dy = timeDiff * vy * speed
+    div.style.left = div.offsetLeft + dx + "px"
+    div.style.top = div.offsetTop + dy + "px"
+
+    lastTime = time
+
+    requestAnimationFrame(ani)
+  })
+</script>
+
+</html>
